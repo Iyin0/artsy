@@ -1,8 +1,10 @@
-import { useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import '../styles/navbar.scss'
 
 const Navbar = () => {
+
+    const navigate = useNavigate()
 
     enum Routes {
         HOME = '/',
@@ -12,9 +14,9 @@ const Navbar = () => {
     }
 
     const location = useLocation()
-    const navRoutes = useRef<HTMLDivElement>(null)
+    const navRoutes = useRef<HTMLDivElement>(null!)
 
-    if (navRoutes.current) {
+    useEffect(() => {
         Array.from(navRoutes.current.children).forEach((child) => {
             child.classList.remove("nav-underline")
 
@@ -39,12 +41,14 @@ const Navbar = () => {
                 }
             }
         })
-    }
+    }, [navRoutes, location.pathname])
+
+
 
     return (
         <nav>
             <div className="nav-name">
-                <h1>ARTSY.</h1>
+                <button onClick={() => navigate('/')}>ARTSY.</button>
             </div>
             <div className="nav-routes" ref={navRoutes}>
                 <div id="home">

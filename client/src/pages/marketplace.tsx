@@ -1,8 +1,12 @@
+import PageTransition from "../components/pageTransition";
+
 const Marketplace = () => {
     return (
-        <div>
-            Marketplace
-        </div>
+        <PageTransition>
+            <div>
+                Marketplace
+            </div>
+        </PageTransition>
     );
 }
 

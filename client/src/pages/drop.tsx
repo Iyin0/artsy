@@ -1,8 +1,12 @@
+import PageTransition from "../components/pageTransition";
+
 const Drop = () => {
     return (
-        <div>
-            Drop
-        </div>
+        <PageTransition>
+            <div>
+                Drop
+            </div>
+        </PageTransition>
     );
 }
 

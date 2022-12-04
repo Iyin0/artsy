@@ -1,8 +1,12 @@
+import PageTransition from "../components/pageTransition";
+
 const Auctions = () => {
     return (
-        <div>
-            Auctions
-        </div>
+        <PageTransition>
+            <div>
+                Auctions
+            </div>
+        </PageTransition>
     );
 }
 
