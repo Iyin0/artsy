@@ -10,7 +10,7 @@ const Home = () => {
 
     const Products = [
         {
-            image: "../src/images/Rectangle 299-2.png",
+            image: "../images/Rectangle 299-2.png",
             title: "The Boolean Egyptian",
             description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, eaque. Explicabo architecto porro, laborum nemo reprehenderit labore ipsam aut unde.",
             creators_img: [
