@@ -375,3 +375,223 @@
         }
     }
 }
+
+.home-redirect {
+
+    margin-top: 190px;
+
+    .bottom {
+        border-bottom: 0.5px solid #333333;
+    }
+
+    .redirect-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-top: 0.5px solid #333333;
+
+        div {
+            display: flex;
+            align-items: center;
+            width: 80%;
+            max-width: 1200px;
+            justify-content: space-between;
+            padding: 59px 0px;
+
+            h2 {
+                margin: 0;
+                font-family: 'Satoshi';
+                font-weight: 500;
+                font-size: 48px;
+                line-height: 65px;
+                color: #333333;
+            }
+        }
+    }
+
+
+}
+
+.home-top-creators {
+    width: 100%;
+    height: 922px;
+    background-color: #E2E2E2;
+    margin: 180px 0px 142px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    .top-section {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 76px;
+
+        h2 {
+            font-family: 'Clash Display';
+            font-weight: 600;
+            font-size: 55px;
+            line-height: 155.5%;
+            color: #161616;
+        }
+
+        .right-comp {
+            display: flex;
+        }
+
+        .slider-track {
+            width: 10px;
+            height: 100%;
+            background-color: #AEAEAE;
+            border-radius: 5px;
+            margin-right: 35px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .slider-thumb {
+            width: 100%;
+            height: 47px;
+            background-color: #292929;
+            border-radius: 5px;
+        }
+
+        .right-text {
+            display: flex;
+            flex-direction: column;
+
+            p {
+                font-family: 'Clash Display';
+                font-weight: 400;
+                font-size: 40px;
+                line-height: 155.5%;
+                color: #333333;
+                margin: 0px 0px 20px;
+
+                &:last-child {
+                    margin-bottom: 0px;
+                }
+            }
+
+        }
+
+    }
+
+    .paragraph {
+        font-family: 'Clash Display';
+        font-weight: 200;
+        font-size: 32px;
+        line-height: 130%;
+        color: rgba(0, 0, 0, 0.57);
+        width: 80%;
+        margin-top: 48px;
+    }
+
+    // .creators-absolute {
+    //     position: absolute;
+    // }
+
+    .circa {
+        font-family: 'Clash Display';
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 155.5%;
+        color: #333333;
+        position: absolute;
+        right: 303px;
+        bottom: 324px;
+    }
+
+    .ninety {
+        font-family: 'Clash Display';
+        font-weight: 700;
+        font-size: 170px;
+        line-height: 155.5%;
+        text-decoration-line: line-through;
+        color: #161616;
+        position: absolute;
+        right: 122px;
+        bottom: 75px;
+    }
+
+    .creator-img-container {
+        display: flex;
+        position: absolute;
+        right: 190px;
+        top: 143px;
+
+        div {
+            transition: ease 2s;
+        }
+    }
+
+}
+
+.home-newsletter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .newsletter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #333333;
+        width: 90%;
+        height: 320px;
+        margin: 147px 0px 50px;
+
+        h2 {
+            font-family: 'Baskervville';
+            font-weight: 400;
+            font-size: 30.2105px;
+            line-height: 39px;
+            color: #333333;
+        }
+
+        p {
+            font-family: 'Satoshi';
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 43px;
+            color: #333333;
+            margin: 20px 0px 34px;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+
+            input {
+                width: 446px;
+                height: 60px;
+                padding-left: 58px;
+                margin-right: 23px;
+                border: 1px solid #333333;
+                font-family: 'Baskervville';
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 21px;
+                color: #333333;
+            }
+
+            button {
+                width: 181px;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: 'Baskervville';
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 21px;
+                color: #FFFFFF;
+                background-color: #272727;
+                border: 1px solid #333333;
+                border-radius: 0px;
+            }
+        }
+    }
+}

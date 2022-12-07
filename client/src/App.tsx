@@ -1,5 +1,6 @@
 import { AnimatePresence } from 'framer-motion'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Footer from './components/footer'
 import Navbar from "./components/navbar"
 import Auctions from './pages/auctions'
 import Drop from './pages/drop'
@@ -20,6 +21,7 @@ function App() {
             <Route path='/drop' element={<Drop />} />
           </Routes>
         </AnimatePresence>
+        <Footer />
       </div>
     </BrowserRouter>
 
