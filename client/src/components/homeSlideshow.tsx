@@ -1,29 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+import slideshowList from '../data/slideshow';
 
 const HomeSlideshow = () => {
-
-    const slideshowList = [
-        {
-            img: "../src/images/Rectangle 230.png",
-            className: 'first-slide'
-        },
-        {
-            img: "../src/images/Rectangle 231.png",
-            className: 'second-slide'
-        },
-        {
-            img: "../src/images/Rectangle 232.png",
-            className: 'third-slide'
-        },
-        {
-            img: "../src/images/Rectangle 233.png",
-            className: 'fourth-slide'
-        },
-        {
-            img: "../src/images/Rectangle 234.png",
-            className: 'fifth-slide'
-        },
-    ]
 
     const [firstSlide, setFirstSlide] = useState(0)
     const [secondSlide, setSecondSlide] = useState(1)

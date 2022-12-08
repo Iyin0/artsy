@@ -4,57 +4,11 @@ import HomeSlideshow from '../components/homeSlideshow';
 import PageTransition from '../components/pageTransition';
 import '../styles/home.scss'
 import { motion } from 'framer-motion';
+import products from '../data/featuredProducts';
+import creators from '../data/creators';
 
 
 const Home = () => {
-
-    const Products = [
-        {
-            image: "../src/images/Rectangle 299-2.png",
-            title: "The Boolean Egyptian",
-            description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, eaque. Explicabo architecto porro, laborum nemo reprehenderit labore ipsam aut unde.",
-            creators_img: [
-                "../src/images/Ellipse 19.png",
-                "../src/images/Ellipse 20.png",
-                "../src/images/Ellipse 21.png",
-                "../src/images/Ellipse 22.png",
-                "../src/images/Ellipse 23.png"
-            ],
-            creators_no: 65,
-        },
-        {
-            image: "../src/images/Rectangle 299-1.png",
-            title: "The Boolean Egyptian",
-            description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, eaque. Explicabo architecto porro, laborum nemo reprehenderit labore ipsam aut unde.",
-            creators_img: [
-                "../src/images/Ellipse 19.png",
-                "../src/images/Ellipse 20.png",
-                "../src/images/Ellipse 21.png",
-                "../src/images/Ellipse 22.png",
-                "../src/images/Ellipse 23.png"
-            ],
-            creators_no: 65,
-        },
-        {
-            image: "../src/images/Rectangle 299-3.png",
-            title: "The Boolean Egyptian",
-            description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, eaque. Explicabo architecto porro, laborum nemo reprehenderit labore ipsam aut unde.",
-            creators_img: [
-                "../src/images/Ellipse 19.png",
-                "../src/images/Ellipse 20.png",
-                "../src/images/Ellipse 21.png",
-                "../src/images/Ellipse 22.png",
-                "../src/images/Ellipse 23.png"
-            ],
-            creators_no: 65,
-        },
-    ]
-
-    const Creators = [
-        "../src/images/Rectangle 299.png",
-        "../src/images/Rectangle 300.png",
-        "../src/images/Rectangle 301.png"
-    ]
 
     const [productHover, setProductHover] = useState(false)
     const [productIndex, setProductIndex] = useState<number | null>(null)
@@ -69,7 +23,7 @@ const Home = () => {
     useEffect(() => {
         reetCretorTimer()
         creatorRef.current = window.setTimeout(() => {
-            setCurrentCreatorIndex((prevSlide) => prevSlide === Creators.length - 1 ? (0) : prevSlide + 1)
+            setCurrentCreatorIndex((prevSlide) => prevSlide === creators.length - 1 ? (0) : prevSlide + 1)
         }, 3000);
 
         return () => {
@@ -91,7 +45,7 @@ const Home = () => {
                 <HomeSlideshow />
                 <div className="home-products" ref={productsRef}>
                     <h2>Featured products</h2>
-                    {Products.map((product, index) => (
+                    {products.map((product, index) => (
                         <div className='product' key={index}>
                             <div className="image-container"
                                 onMouseEnter={() => { setProductHover(true); setProductIndex(index) }}
@@ -247,7 +201,7 @@ const Home = () => {
                         <p className='circa'>CIRCA</p>
                         <p className='ninety'>1985</p>
                         <div className="creator-img-container">
-                            {Creators.map((img, index) => (
+                            {creators.map((img, index) => (
                                 <div
                                     key={index}
                                     style={{ transform: `translate3d(0, 0, ${currentCreatorIndex * 100}%)` }}

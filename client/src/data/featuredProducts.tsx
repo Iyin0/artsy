@@ -1,54 +1,33 @@
+import product01 from "../images/Rectangle 299-2.png"
+import product02 from "../images/Rectangle 299-1.png"
+import product03 from "../images/Rectangle 299-3.png"
+import creator19 from "../images/Ellipse 19.png"
+import creator20 from "../images/Ellipse 20.png"
+import creator21 from "../images/Ellipse 21.png"
+import creator22 from "../images/Ellipse 22.png"
+import creator23 from "../images/Ellipse 23.png"
+
 const products = [
     {
-        name: "The Boolean Egyptian",
-        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex quas " +
-            "laudantium reiciendis vel nobis mollitia maiores eos expedita, inventore quos id " +
-            "omnis quis non praesentium odio repellat placeat magnam hic eveniet repellendus at " +
-            "excepturi assumenda possimus? Distinctio illo deleniti illum libero delectus. " +
-            "Aspernatur voluptas pariatur omnis saepe, non reiciendis doloribus.",
-        image: "../src/images/Rectangle 299-2.png",
-        creators: 69,
-        creators_img: [
-            "../src/images/Ellipse 19.png",
-            "../src/images/Ellipse 20.png",
-            "../src/images/Ellipse 21.png",
-            "../src/images/Ellipse 22.png",
-            "../src/images/Ellipse 23.png",
-        ]
+        title: "The Boolean Egyptian",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, fuga? Nulla repellendus pariatur eveniet officiis illo vero ex aut quos.",
+        image: product01,
+        creators_no: 69,
+        creators_img: [creator19, creator20, creator21, creator22, creator23]
     },
     {
-        name: "The Boolean Egyptian",
-        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex quas " +
-            "laudantium reiciendis vel nobis mollitia maiores eos expedita, inventore quos id " +
-            "omnis quis non praesentium odio repellat placeat magnam hic eveniet repellendus at " +
-            "excepturi assumenda possimus? Distinctio illo deleniti illum libero delectus. " +
-            "Aspernatur voluptas pariatur omnis saepe, non reiciendis doloribus.",
-        image: "../src/images/Rectangle 299-1.png",
-        creators: 69,
-        creators_img: [
-            "../src/images/Ellipse 19.png",
-            "../src/images/Ellipse 20.png",
-            "../src/images/Ellipse 21.png",
-            "../src/images/Ellipse 22.png",
-            "../src/images/Ellipse 23.png",
-        ]
+        title: "The Boolean Egyptian",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quae enim non doloribus perferendis magnam praesentium repellendus temporibus consequuntur aut?",
+        image: product02,
+        creators_no: 69,
+        creators_img: [creator19, creator20, creator21, creator22, creator23]
     },
     {
-        name: "The Boolean Egyptian",
-        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex quas " +
-            "laudantium reiciendis vel nobis mollitia maiores eos expedita, inventore quos id " +
-            "omnis quis non praesentium odio repellat placeat magnam hic eveniet repellendus at " +
-            "excepturi assumenda possimus? Distinctio illo deleniti illum libero delectus. " +
-            "Aspernatur voluptas pariatur omnis saepe, non reiciendis doloribus.",
-        image: "../src/images/Rectangle 299-3.png",
-        creators: 69,
-        creators_img: [
-            "../src/images/Ellipse 19.png",
-            "../src/images/Ellipse 20.png",
-            "../src/images/Ellipse 21.png",
-            "../src/images/Ellipse 22.png",
-            "../src/images/Ellipse 23.png",
-        ]
+        title: "The Boolean Egyptian",
+        description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptas iste soluta quia! Debitis, et eius perferendis eaque quia voluptates!",
+        image: product03,
+        creators_no: 69,
+        creators_img: [creator19, creator20, creator21, creator22, creator23]
     },
 ]
 
