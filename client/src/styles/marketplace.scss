@@ -79,19 +79,18 @@
                 margin-bottom: 50px;
                 align-items: center;
 
-                p {
+                button {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
                     font-family: 'Satoshi';
                     font-weight: 500;
-                    font-size: 26px;
+                    font-size: 28px;
                     line-height: 157.6%;
                     color: #000000;
-                    margin-right: 67px;
-                }
-
-                button {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+                    margin: 0;
+                    padding: 0;
                 }
             }
 
@@ -156,75 +155,121 @@
             }
 
             .price {
+                margin-top: 70px;
 
-                .input[type=range] {
-                    box-sizing: border-box;
-                    appearance: none;
-                    width: 400px;
-                    margin: 0;
-                    padding: 0 2px;
-                    /* Add some L/R padding to ensure box shadow of handle is shown */
-                    overflow: hidden;
-                    border: 0;
-                    border-radius: 1px;
-                    outline: none;
-                    background: linear-gradient(grey, grey) no-repeat center;
-                    /* Use a linear gradient to generate only the 2px height background */
-                    background-size: 100% 2px;
-                    pointer-events: none;
+                .value {
+                    margin-bottom: 50px;
 
-                    &:active,
-                    &:focus {
-                        outline: none;
-                    }
-
-                    &::-webkit-slider-thumb {
-                        height: 28px;
-                        width: 28px;
-                        border-radius: 28px;
-                        background-color: #fff;
-                        position: relative;
-                        margin: 5px 0;
-                        /* Add some margin to ensure box shadow is shown */
-                        cursor: pointer;
-                        appearance: none;
-                        pointer-events: all;
-                        box-shadow: 0 1px 4px 0.5px rgba(0, 0, 0, 0.25);
-
-                        &::before {
-                            content: ' ';
-                            display: block;
-                            position: absolute;
-                            top: 13px;
-                            left: 100%;
-                            width: 2000px;
-                            height: 2px;
-                        }
+                    p {
+                        font-family: 'Satoshi';
+                        font-weight: 400;
+                        font-size: 24px;
+                        line-height: 32px;
+                        color: #292929;
+                        text-align: center;
                     }
                 }
 
-                .multi-range {
+                .range-container {
                     position: relative;
-                    height: 50px;
+                    width: 100%;
+                    height: 45px;
 
-                    input[type=range] {
+                    & input[type="range"] {
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        width: 100%;
+                        outline: none;
                         position: absolute;
+                        margin: auto;
+                        top: 0;
+                        bottom: 0;
+                        background-color: transparent;
+                        pointer-events: none;
 
-                        &:nth-child(1) {
-                            &::-webkit-slider-thumb::before {
-                                background-color: red;
-                            }
+                        &::-webkit-slider-runnable-track {
+                            -webkit-appearance: none;
+                            height: 5px;
                         }
 
-                        &:nth-child(2) {
-                            background: none;
+                        &::-moz-range-track {
+                            -moz-appearance: none;
+                            height: 5px;
+                        }
 
-                            &::-webkit-slider-thumb::before {
-                                background-color: grey;
-                            }
+                        &::-ms-track {
+                            appearance: none;
+                            height: 5px;
+                        }
+
+                        &::-webkit-slider-thumb {
+                            -webkit-appearance: none;
+                            width: 32px;
+                            height: 32px;
+                            border-radius: 50%;
+                            background-color: #333333;
+                            border: 2px solid #333333;
+                            cursor: pointer;
+                            pointer-events: auto;
+                            margin-top: -14px;
+                        }
+
+                        &::-moz-range-thumb {
+                            -moz-appearance: none;
+                            width: 32px;
+                            height: 32px;
+                            border-radius: 50%;
+                            background-color: #333333;
+                            border: 2px solid #333333;
+                            cursor: pointer;
+                            pointer-events: auto;
+                        }
+
+                        &::-ms-thumb {
+                            appearance: none;
+                            width: 32px;
+                            height: 32px;
+                            border-radius: 50%;
+                            background-color: #333333;
+                            border: 2px solid #333333;
+                            cursor: pointer;
+                            pointer-events: auto;
+                        }
+
+                        &:active::-webkit-slider-thumb {
+                            background-color: white;
                         }
                     }
+
+
+                    .slider-track {
+                        width: 100%;
+                        height: 5px;
+                        background-color: #B8BCB5;
+                        position: absolute;
+                        margin: auto;
+                        top: 0;
+                        bottom: 0;
+                    }
                 }
+            }
+
+            .artist {
+                margin-top: 139px;
+
+                p {
+                    font-family: 'Satoshi';
+                    font-weight: 400;
+                    font-size: 24px;
+                    line-height: 32px;
+                    color: #292929;
+                    margin-bottom: 20px;
+                }
+            }
+
+            .year {
+                margin-top: 124px;
             }
         }
     }
@@ -314,18 +359,26 @@
         }
 
         .see-more {
-            width: 249px;
-            height: 73px;
+            width: 100%;
+            height: 500px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 1px solid #333333;
-            border-radius: 10px;
-            font-family: 'Satoshi';
-            font-weight: 500;
-            font-size: 30px;
-            line-height: 41px;
-            color: #333333;
+
+            button {
+                width: 249px;
+                height: 73px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #333333;
+                border-radius: 10px;
+                font-family: 'Satoshi';
+                font-weight: 500;
+                font-size: 30px;
+                line-height: 41px;
+                color: #333333;
+            }
         }
     }
 }

@@ -1,9 +1,46 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/pageTransition";
 import marketItems from "../data/marketItems";
 import '../styles/marketplace.scss'
 
 const Marketplace = () => {
+    const [range1, setRange1] = useState<string | null>(null)
+    const [range2, setRange2] = useState<string | null>(null)
+    const slider1 = useRef<HTMLInputElement>(null!)
+    const slider2 = useRef<HTMLInputElement>(null!)
+    const minGap = 15
+    const [percent1, setPercent1] = useState<number | null>(null)
+    const [percent2, setPercent2] = useState<number | null>(null)
+
+    const handleSlide1 = () => {
+        if (parseInt(slider2.current.value) - parseInt(slider1.current.value) <= minGap) {
+            slider1.current.value = (parseInt(slider2.current.value) - minGap).toString()
+        }
+        setRange1(slider1.current.value)
+        fillSlider()
+    }
+
+    const handleSlide2 = () => {
+        if (parseInt(slider2.current.value) - parseInt(slider1.current.value) <= minGap) {
+            slider2.current.value = (parseInt(slider1.current.value) + minGap).toString()
+        }
+        setRange2(slider2.current.value)
+        fillSlider()
+
+    }
+
+    const fillSlider = () => {
+        setPercent1(Math.floor((parseInt(slider1.current.value) / parseInt(slider1.current.max)) * 100))
+        setPercent2(Math.floor((parseInt(slider2.current.value) / parseInt(slider1.current.max)) * 100))
+
+    }
+
+    useEffect(() => {
+        handleSlide1()
+        handleSlide2()
+    }, [])
+
     return (
         <PageTransition>
             <div className="marketplace">
@@ -28,8 +65,8 @@ const Marketplace = () => {
                         </div>
                         <div className="category">
                             <div className="heading">
-                                <p>By category</p>
                                 <button>
+                                    By category
                                     <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M10.3522 18.6558C10.5778 18.8762 10.8837 19 11.2026 19C11.5216 19 11.8275 18.8762 12.053 18.6558L18.0073 12.8373L23.9615 18.6558C24.1883 18.87 24.4922 18.9884 24.8076 18.9858C25.123 18.9831 25.4247 18.8595 25.6477 18.6415C25.8707 18.4236 25.9972 18.1288 26 17.8206C26.0027 17.5124 25.8815 17.2154 25.6623 16.9937L18.8577 10.3442C18.6321 10.1238 18.3262 10 18.0073 10C17.6883 10 17.3824 10.1238 17.1568 10.3442L10.3522 16.9937C10.1267 17.2142 10 17.5131 10 17.8248C10 18.1365 10.1267 18.4354 10.3522 18.6558Z" fill="#2F2F2F" />
                                     </svg>
@@ -80,23 +117,36 @@ const Marketplace = () => {
                         </div>
                         <div className="price">
                             <div className="heading">
-                                <p>By price</p>
                                 <button>
+                                    By price
                                     <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M10.3522 18.6558C10.5778 18.8762 10.8837 19 11.2026 19C11.5216 19 11.8275 18.8762 12.053 18.6558L18.0073 12.8373L23.9615 18.6558C24.1883 18.87 24.4922 18.9884 24.8076 18.9858C25.123 18.9831 25.4247 18.8595 25.6477 18.6415C25.8707 18.4236 25.9972 18.1288 26 17.8206C26.0027 17.5124 25.8815 17.2154 25.6623 16.9937L18.8577 10.3442C18.6321 10.1238 18.3262 10 18.0073 10C17.6883 10 17.3824 10.1238 17.1568 10.3442L10.3522 16.9937C10.1267 17.2142 10 17.5131 10 17.8248C10 18.1365 10.1267 18.4354 10.3522 18.6558Z" fill="#2F2F2F" />
                                     </svg>
                                 </button>
                             </div>
-
-                            <span className="multi-range">
-                                <input type="range" min="0" max="50" value="5" id="lower" />
-                                <input type="range" min="0" max="50" value="45" id="upper" />
-                            </span>
+                            <div className="range-wrapper">
+                                <div className="value">
+                                    <p>${range1}.00 - ${range2}.00</p>
+                                </div>
+                                <div className="range-container">
+                                    <div className="slider-track"
+                                        style={{ background: `linear-gradient(to right, #B8BCB5 ${percent1}%, #333333 ${percent1}%, #333333 ${percent2}%, #B8BCB5 ${percent2}%)` }}
+                                    ></div>
+                                    <input type="range" min="0" defaultValue='5' max="100" id="slider1"
+                                        ref={slider1}
+                                        onInput={handleSlide1}
+                                    />
+                                    <input type="range" min="0" defaultValue='45' max="100" id="slider2"
+                                        ref={slider2}
+                                        onInput={handleSlide2}
+                                    />
+                                </div>
+                            </div>
                         </div>
                         <div className="artist">
                             <div className="heading">
-                                <p>By artist</p>
                                 <button>
+                                    By artist
                                     <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M10.3522 18.6558C10.5778 18.8762 10.8837 19 11.2026 19C11.5216 19 11.8275 18.8762 12.053 18.6558L18.0073 12.8373L23.9615 18.6558C24.1883 18.87 24.4922 18.9884 24.8076 18.9858C25.123 18.9831 25.4247 18.8595 25.6477 18.6415C25.8707 18.4236 25.9972 18.1288 26 17.8206C26.0027 17.5124 25.8815 17.2154 25.6623 16.9937L18.8577 10.3442C18.6321 10.1238 18.3262 10 18.0073 10C17.6883 10 17.3824 10.1238 17.1568 10.3442L10.3522 16.9937C10.1267 17.2142 10 17.5131 10 17.8248C10 18.1365 10.1267 18.4354 10.3522 18.6558Z" fill="#2F2F2F" />
                                     </svg>
@@ -112,8 +162,8 @@ const Marketplace = () => {
                         </div>
                         <div className="year">
                             <div className="heading">
-                                <p>Collection year</p>
                                 <button>
+                                    Collection year
                                     <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M10.3522 18.6558C10.5778 18.8762 10.8837 19 11.2026 19C11.5216 19 11.8275 18.8762 12.053 18.6558L18.0073 12.8373L23.9615 18.6558C24.1883 18.87 24.4922 18.9884 24.8076 18.9858C25.123 18.9831 25.4247 18.8595 25.6477 18.6415C25.8707 18.4236 25.9972 18.1288 26 17.8206C26.0027 17.5124 25.8815 17.2154 25.6623 16.9937L18.8577 10.3442C18.6321 10.1238 18.3262 10 18.0073 10C17.6883 10 17.3824 10.1238 17.1568 10.3442L10.3522 16.9937C10.1267 17.2142 10 17.5131 10 17.8248C10 18.1365 10.1267 18.4354 10.3522 18.6558Z" fill="#2F2F2F" />
                                     </svg>
@@ -140,7 +190,9 @@ const Marketplace = () => {
                             </Link>
                         ))}
                     </div>
-                    <button className="see-more">See more</button>
+                    <div className="see-more">
+                        <button>See more</button>
+                    </div>
                 </main>
             </div>
         </PageTransition>
