@@ -5,18 +5,21 @@ nav {
     align-items: center;
 }
 
+.hamburger {
+    display: none;
+}
+
+.sideNav {
+    display: none;
+}
+
 .nav-name {
-    button {
+    a {
         font-family: 'STIX Two Text', serif;
-        font-style: normal;
         font-weight: 700;
         font-size: 32px;
         line-height: 90px;
         color: #292929;
-
-        &:focus {
-            outline: none;
-        }
     }
 }
 
@@ -28,7 +31,6 @@ nav {
 
     a {
         font-family: 'Satoshi', sans-serif;
-        font-style: normal;
         font-weight: 500;
         font-size: 24px;
         line-height: 32px;
@@ -44,5 +46,106 @@ nav {
 
     button {
         margin-right: 21px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    nav {
+        padding: 25px 8px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .sideNav {
+        display: flex;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+        left: 0;
+        top: 0;
+
+        .left {
+            flex-basis: 70%;
+            max-width: 414px;
+            height: 100%;
+            background-color: white;
+            padding: 24px 24px 24px 30px;
+            position: relative;
+
+            .top {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                a {
+                    font-family: 'STIX Two Text';
+                    font-weight: 700;
+                    font-size: 24px;
+                    line-height: 52px;
+                    color: #292929;
+                }
+            }
+
+            .routes {
+                margin-top: 50px;
+                display: flex;
+                flex-direction: column;
+
+                a {
+                    font-family: 'Satoshi';
+                    font-weight: 500;
+                    font-size: 24px;
+                    line-height: 52px;
+                    color: #333333;
+                    margin-bottom: 18px;
+                }
+            }
+
+            .contact {
+                position: absolute;
+                right: 32px;
+                bottom: 64px;
+            }
+        }
+
+        .right {
+            width: 30%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+        }
+    }
+
+    .nav-name {
+        a {
+            font-size: 24px;
+            line-height: 52px;
+        }
+    }
+
+    .nav-routes {
+        display: none;
+    }
+
+    .nav-icons {
+
+        button {
+            transform: scale(0.8);
+            margin-right: 17px;
+
+            &:last-child {
+                display: none;
+            }
+
+            &:nth-child(2) {
+                margin-right: 0px;
+            }
+        }
     }
 }
