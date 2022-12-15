@@ -3,16 +3,15 @@ import { Link } from 'react-router-dom';
 import HomeSlideshow from '../components/homeSlideshow';
 import PageTransition from '../components/pageTransition';
 import '../styles/home.scss'
-import { motion } from 'framer-motion';
 import products from '../data/featuredProducts';
 import creators from '../data/creators';
+import mobileHero from '../data/mobile-hero';
+import upcoming from '../data/upcoming';
+import upcomingImg1 from '../images/Rectangle 91.png'
 
 
 const Home = () => {
 
-    const [productHover, setProductHover] = useState(false)
-    const [productIndex, setProductIndex] = useState<number | null>(null)
-    const productsRef = useRef<HTMLDivElement>(null!)
     const [currentCreatorIndex, setCurrentCreatorIndex] = useState(0)
     const creatorRef = useRef<number | null>(null)
 
@@ -31,42 +30,37 @@ const Home = () => {
         }
     }, [currentCreatorIndex])
 
-    useEffect(() => {
-        productsRef.current.children[2].classList.add('reversed')
-    }, [productsRef])
 
     return (
         <PageTransition>
             <div className="home">
                 <div className="home-intro">
-                    <h1>Photography is poetry & <br /> beautiful untold stories</h1>
-                    <p>Flip through more than 10,000 vintage shots, old photograghs, historic <br /> images and captures seamlessly in one place. Register to get top access.</p>
+                    <h1>Photography is poetry & beautiful untold stories</h1>
+                    <p>Flip through more than 10,000 vintage shots, old photograghs, historic images and captures seamlessly in one place. Register to get top access.</p>
                 </div>
                 <HomeSlideshow />
-                <div className="home-products" ref={productsRef}>
+                <div className="home-mobile-images">
+                    {mobileHero.map((img, index) => (
+                        <div key={index}>
+                            <img src={img} alt="" />
+                        </div>
+                    ))}
+                </div>
+                <div className="home-products">
                     <h2>Featured products</h2>
                     {products.map((product, index) => (
                         <div className='product' key={index}>
-                            <div className="image-container"
-                                onMouseEnter={() => { setProductHover(true); setProductIndex(index) }}
-                                onMouseLeave={() => { setProductHover(false); setProductIndex(null) }}
-                            >
-                                {productHover && productIndex === index ? (
-                                    <motion.div className='product-img-hover'
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
-                                        transition={{ duration: 0.5 }}
-                                    >
-                                        <p>View Product</p>
-                                        <button>
-                                            <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="39" cy="39" r="38.75" stroke="white" strokeWidth="0.5" />
-                                                <path fillRule="evenodd" clipRule="evenodd" d="M19 39C19 38.617 19.1505 38.2496 19.4184 37.9788C19.6863 37.7079 20.0496 37.5558 20.4285 37.5558H54.1206L45.1298 28.4686C44.8615 28.1974 44.7108 27.8296 44.7108 27.4461C44.7108 27.0625 44.8615 26.6947 45.1298 26.4235C45.398 26.1524 45.7618 26 46.1411 26C46.5205 26 46.8843 26.1524 47.1525 26.4235L58.5803 37.9775C58.7134 38.1116 58.8189 38.271 58.8909 38.4465C58.9629 38.6219 59 38.81 59 39C59 39.19 58.9629 39.3781 58.8909 39.5535C58.8189 39.729 58.7134 39.8884 58.5803 40.0225L47.1525 51.5765C46.8843 51.8476 46.5205 52 46.1411 52C45.7618 52 45.398 51.8476 45.1298 51.5765C44.8615 51.3053 44.7108 50.9375 44.7108 50.5539C44.7108 50.1704 44.8615 49.8026 45.1298 49.5314L54.1206 40.4442H20.4285C20.0496 40.4442 19.6863 40.2921 19.4184 40.0212C19.1505 39.7504 19 39.383 19 39Z" fill="white" />
-                                            </svg>
-                                        </button>
-                                    </motion.div>
-                                ) : null}
+                            <div className="image-container">
+                                <div className='product-img-hover'>
+                                    <p>View Product</p>
+                                    <h3>{product.title}</h3>
+                                    <button>
+                                        <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="39" cy="39" r="38.75" stroke="white" strokeWidth="0.5" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M19 39C19 38.617 19.1505 38.2496 19.4184 37.9788C19.6863 37.7079 20.0496 37.5558 20.4285 37.5558H54.1206L45.1298 28.4686C44.8615 28.1974 44.7108 27.8296 44.7108 27.4461C44.7108 27.0625 44.8615 26.6947 45.1298 26.4235C45.398 26.1524 45.7618 26 46.1411 26C46.5205 26 46.8843 26.1524 47.1525 26.4235L58.5803 37.9775C58.7134 38.1116 58.8189 38.271 58.8909 38.4465C58.9629 38.6219 59 38.81 59 39C59 39.19 58.9629 39.3781 58.8909 39.5535C58.8189 39.729 58.7134 39.8884 58.5803 40.0225L47.1525 51.5765C46.8843 51.8476 46.5205 52 46.1411 52C45.7618 52 45.398 51.8476 45.1298 51.5765C44.8615 51.3053 44.7108 50.9375 44.7108 50.5539C44.7108 50.1704 44.8615 49.8026 45.1298 49.5314L54.1206 40.4442H20.4285C20.0496 40.4442 19.6863 40.2921 19.4184 40.0212C19.1505 39.7504 19 39.383 19 39Z" fill="white" />
+                                        </svg>
+                                    </button>
+                                </div>
                                 <img className='product-img' src={product.image} alt="" />
                             </div>
                             <div className="product-detail">
@@ -97,28 +91,32 @@ const Home = () => {
                             <path d="M667.283 3.28284C667.439 3.12663 667.439 2.87337 667.283 2.71716L664.737 0.171573C664.581 0.0153632 664.328 0.0153632 664.172 0.171573C664.015 0.327783 664.015 0.581048 664.172 0.737258L666.434 3L664.172 5.26274C664.015 5.41895 664.015 5.67222 664.172 5.82843C664.328 5.98464 664.581 5.98464 664.737 5.82843L667.283 3.28284ZM0 3.4H667V2.6H0V3.4Z" fill="white" />
                         </svg>
 
-                        <div className='upcoming-details'>
-                            <div className='left-component'>
-                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="8.66136" cy="8.21263" r="7.9846" fill="#F5F5F5" />
-                                </svg>
-                                <p>01</p>
-                            </div>
-                            <div className='right-component'>
-                                <div>
-                                    <h3>MONALISA REDEFINED <br />IN STYLE</h3>
-                                    <p className='start-time'>START ON: 08:00 GTS. MONDAY</p>
-                                    <p className='exclusive'>GET EXCLUSIVE VIEWING OF CONTEMPORARY ART AND CONNECT WITH <br />INVESTORS AND AUCTIONEERS
-                                        ACROSS THE WORLD BRINGING THEIR <br />HIGHEST AND LOWEST BIDS.</p>
+                        {upcoming.map((event, index) => (
+                            <div className='upcoming-details' key={index}>
+                                <div className="event-img">
+                                    <img src={event.image} alt="" />
                                 </div>
-                                <div className='link-component'>
+                                <div className='left-component'>
+                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8.66136" cy="8.21263" r="7.9846" fill="#F5F5F5" />
+                                    </svg>
+                                    <p>{event.index}</p>
+                                </div>
+                                <div className='right-component'>
                                     <div>
-                                        <Link to='/'>See more</Link>
-                                        <button>Set a reminder</button>
+                                        <h3>{event.title}</h3>
+                                        <p className='start-time'>{event.startTime}</p>
+                                        <p className='exclusive'>{event.description}</p>
+                                    </div>
+                                    <div className='link-component'>
+                                        <div>
+                                            <Link to='/'>See more</Link>
+                                            <button>Set a reminder</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        ))}
                         <div className='upcoming-bottom'>
                             <div className="slider-track">
                                 <div className="slider-thumb"></div>

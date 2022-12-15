@@ -16,14 +16,14 @@ const products = [
         creators_img: [creator19, creator20, creator21, creator22, creator23]
     },
     {
-        title: "The Boolean Egyptian",
+        title: "Are we there yet?",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quae enim non doloribus perferendis magnam praesentium repellendus temporibus consequuntur aut?",
         image: product02,
         creators_no: 69,
         creators_img: [creator19, creator20, creator21, creator22, creator23]
     },
     {
-        title: "The Boolean Egyptian",
+        title: "Oloibiri 1997",
         description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptas iste soluta quia! Debitis, et eius perferendis eaque quia voluptates!",
         image: product03,
         creators_no: 69,
