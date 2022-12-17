@@ -7,26 +7,29 @@ import products from '../data/featuredProducts';
 import creators from '../data/creators';
 import mobileHero from '../data/mobile-hero';
 import upcoming from '../data/upcoming';
-import upcomingImg1 from '../images/Rectangle 91.png'
+import { motion } from 'framer-motion';
 
 
 const Home = () => {
 
     const [currentCreatorIndex, setCurrentCreatorIndex] = useState(0)
+    const [currentCreator, setCurrentCreator] = useState(creators[currentCreatorIndex])
     const creatorRef = useRef<number | null>(null)
+    const [email, setEmail] = useState('')
 
-    const reetCretorTimer = () => {
+    const resetCretorTimer = () => {
         if (creatorRef.current) window.clearInterval(creatorRef.current)
     }
 
     useEffect(() => {
-        reetCretorTimer()
+        resetCretorTimer()
         creatorRef.current = window.setTimeout(() => {
             setCurrentCreatorIndex((prevSlide) => prevSlide === creators.length - 1 ? (0) : prevSlide + 1)
+            setCurrentCreator(creators[currentCreatorIndex])
         }, 3000);
 
         return () => {
-            reetCretorTimer()
+            resetCretorTimer()
         }
     }, [currentCreatorIndex])
 
@@ -198,18 +201,14 @@ const Home = () => {
                     <div className="creators-absolute">
                         <p className='circa'>CIRCA</p>
                         <p className='ninety'>1985</p>
-                        <div className="creator-img-container">
-                            {creators.map((img, index) => (
-                                <div
-                                    key={index}
-                                    style={{ transform: `translate3d(0, 0, ${currentCreatorIndex * 100}%)` }}
-                                >
-                                    {currentCreatorIndex === index ? (
-                                        <img className='creator-img' src={img} alt="" />
-                                    ) : null}
-                                </div>
-                            ))}
-                        </div>
+                        <motion.div className="creator-img-container"
+                            key={currentCreator}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 2 }}
+                        >
+                            <img className='creator-img' src={currentCreator} />
+                        </motion.div>
                     </div>
                 </div>
                 <div className="home-newsletter">
@@ -217,7 +216,10 @@ const Home = () => {
                         <h2>NEWSLETTER</h2>
                         <p>Subscribe to get daily updates on new drops & exciting deals</p>
                         <form>
-                            <input type="email" placeholder='ENTER YOUR EMAIL' />
+                            <input type="email" placeholder='ENTER YOUR EMAIL'
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
+                            />
                             <button>SUSCRIBE</button>
                         </form>
                     </div>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PageTransition from "../components/pageTransition";
 import marketItems from "../data/marketItems";
 import '../styles/marketplace.scss'
+import { motion } from "framer-motion";
 
 const Marketplace = () => {
     const [range1, setRange1] = useState<string | null>(null)
@@ -12,6 +13,12 @@ const Marketplace = () => {
     const minGap = 15
     const [percent1, setPercent1] = useState<number | null>(null)
     const [percent2, setPercent2] = useState<number | null>(null)
+    const [categoriesState, setCategoriesState] = useState(true)
+    const [priceState, setPriceState] = useState(true)
+    const [artistState, setArtistState] = useState(true)
+    const [collectionState, setCollectionState] = useState(false)
+    const [sortState, setSortState] = useState(false)
+    const [filterState, setFilterState] = useState(false)
 
     const handleSlide1 = () => {
         if (parseInt(slider2.current.value) - parseInt(slider1.current.value) <= minGap) {
@@ -65,106 +72,121 @@ const Marketplace = () => {
                         </div>
                         <div className="category">
                             <div className="heading">
-                                <button>
+                                <button onClick={() => setCategoriesState(!categoriesState)}>
                                     By category
-                                    <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg className={categoriesState ? "" : "reverse"} width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M10.3522 18.6558C10.5778 18.8762 10.8837 19 11.2026 19C11.5216 19 11.8275 18.8762 12.053 18.6558L18.0073 12.8373L23.9615 18.6558C24.1883 18.87 24.4922 18.9884 24.8076 18.9858C25.123 18.9831 25.4247 18.8595 25.6477 18.6415C25.8707 18.4236 25.9972 18.1288 26 17.8206C26.0027 17.5124 25.8815 17.2154 25.6623 16.9937L18.8577 10.3442C18.6321 10.1238 18.3262 10 18.0073 10C17.6883 10 17.3824 10.1238 17.1568 10.3442L10.3522 16.9937C10.1267 17.2142 10 17.5131 10 17.8248C10 18.1365 10.1267 18.4354 10.3522 18.6558Z" fill="#2F2F2F" />
                                     </svg>
                                 </button>
                             </div>
-                            <div className="categories">
-                                <label>Editorials
-                                    <input type="checkbox" />
-                                    <span className="checkmark">
-                                        <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.7713 10.8018L15.296 0.481049C15.5919 0.160349 15.9686 0 16.426 0C16.8834 0 17.2601 0.160349 17.5561 0.481049C17.852 0.801749 18 1.20991 18 1.70554C18 2.20117 17.852 2.60933 17.5561 2.93003L6.90134 14.4752C6.57847 14.8251 6.20179 15 5.7713 15C5.34081 15 4.96413 14.8251 4.64126 14.4752L0.443946 9.92711C0.147981 9.60641 0 9.19825 0 8.70262C0 8.207 0.147981 7.79883 0.443946 7.47813C0.73991 7.15743 1.11659 6.99708 1.57399 6.99708C2.03139 6.99708 2.40807 7.15743 2.70404 7.47813L5.7713 10.8018Z" fill="black" />
-                                        </svg>
-                                    </span>
-                                </label>
-                                <label>Fashion
-                                    <input type="checkbox" />
-                                    <span className="checkmark">
-                                        <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.7713 10.8018L15.296 0.481049C15.5919 0.160349 15.9686 0 16.426 0C16.8834 0 17.2601 0.160349 17.5561 0.481049C17.852 0.801749 18 1.20991 18 1.70554C18 2.20117 17.852 2.60933 17.5561 2.93003L6.90134 14.4752C6.57847 14.8251 6.20179 15 5.7713 15C5.34081 15 4.96413 14.8251 4.64126 14.4752L0.443946 9.92711C0.147981 9.60641 0 9.19825 0 8.70262C0 8.207 0.147981 7.79883 0.443946 7.47813C0.73991 7.15743 1.11659 6.99708 1.57399 6.99708C2.03139 6.99708 2.40807 7.15743 2.70404 7.47813L5.7713 10.8018Z" fill="black" />
-                                        </svg>
-                                    </span>
-                                </label>
-                                <label>Optics
-                                    <input type="checkbox" />
-                                    <span className="checkmark">
-                                        <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.7713 10.8018L15.296 0.481049C15.5919 0.160349 15.9686 0 16.426 0C16.8834 0 17.2601 0.160349 17.5561 0.481049C17.852 0.801749 18 1.20991 18 1.70554C18 2.20117 17.852 2.60933 17.5561 2.93003L6.90134 14.4752C6.57847 14.8251 6.20179 15 5.7713 15C5.34081 15 4.96413 14.8251 4.64126 14.4752L0.443946 9.92711C0.147981 9.60641 0 9.19825 0 8.70262C0 8.207 0.147981 7.79883 0.443946 7.47813C0.73991 7.15743 1.11659 6.99708 1.57399 6.99708C2.03139 6.99708 2.40807 7.15743 2.70404 7.47813L5.7713 10.8018Z" fill="black" />
-                                        </svg>
-                                    </span>
-                                </label>
-                                <label>Art & Museum
-                                    <input type="checkbox" />
-                                    <span className="checkmark">
-                                        <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.7713 10.8018L15.296 0.481049C15.5919 0.160349 15.9686 0 16.426 0C16.8834 0 17.2601 0.160349 17.5561 0.481049C17.852 0.801749 18 1.20991 18 1.70554C18 2.20117 17.852 2.60933 17.5561 2.93003L6.90134 14.4752C6.57847 14.8251 6.20179 15 5.7713 15C5.34081 15 4.96413 14.8251 4.64126 14.4752L0.443946 9.92711C0.147981 9.60641 0 9.19825 0 8.70262C0 8.207 0.147981 7.79883 0.443946 7.47813C0.73991 7.15743 1.11659 6.99708 1.57399 6.99708C2.03139 6.99708 2.40807 7.15743 2.70404 7.47813L5.7713 10.8018Z" fill="black" />
-                                        </svg>
-                                    </span>
-                                </label>
-                                <label>Nature
-                                    <input type="checkbox" />
-                                    <span className="checkmark">
-                                        <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.7713 10.8018L15.296 0.481049C15.5919 0.160349 15.9686 0 16.426 0C16.8834 0 17.2601 0.160349 17.5561 0.481049C17.852 0.801749 18 1.20991 18 1.70554C18 2.20117 17.852 2.60933 17.5561 2.93003L6.90134 14.4752C6.57847 14.8251 6.20179 15 5.7713 15C5.34081 15 4.96413 14.8251 4.64126 14.4752L0.443946 9.92711C0.147981 9.60641 0 9.19825 0 8.70262C0 8.207 0.147981 7.79883 0.443946 7.47813C0.73991 7.15743 1.11659 6.99708 1.57399 6.99708C2.03139 6.99708 2.40807 7.15743 2.70404 7.47813L5.7713 10.8018Z" fill="black" />
-                                        </svg>
-                                    </span>
-                                </label>
-                            </div>
+                            {categoriesState &&
+                                <motion.div className="categories"
+                                    initial={{ y: 0, opacity: 0 }}
+                                    animate={{ y: 10, opacity: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    <label>Editorials
+                                        <input type="checkbox" />
+                                        <span className="checkmark">
+                                            <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.7713 10.8018L15.296 0.481049C15.5919 0.160349 15.9686 0 16.426 0C16.8834 0 17.2601 0.160349 17.5561 0.481049C17.852 0.801749 18 1.20991 18 1.70554C18 2.20117 17.852 2.60933 17.5561 2.93003L6.90134 14.4752C6.57847 14.8251 6.20179 15 5.7713 15C5.34081 15 4.96413 14.8251 4.64126 14.4752L0.443946 9.92711C0.147981 9.60641 0 9.19825 0 8.70262C0 8.207 0.147981 7.79883 0.443946 7.47813C0.73991 7.15743 1.11659 6.99708 1.57399 6.99708C2.03139 6.99708 2.40807 7.15743 2.70404 7.47813L5.7713 10.8018Z" fill="black" />
+                                            </svg>
+                                        </span>
+                                    </label>
+                                    <label>Fashion
+                                        <input type="checkbox" />
+                                        <span className="checkmark">
+                                            <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.7713 10.8018L15.296 0.481049C15.5919 0.160349 15.9686 0 16.426 0C16.8834 0 17.2601 0.160349 17.5561 0.481049C17.852 0.801749 18 1.20991 18 1.70554C18 2.20117 17.852 2.60933 17.5561 2.93003L6.90134 14.4752C6.57847 14.8251 6.20179 15 5.7713 15C5.34081 15 4.96413 14.8251 4.64126 14.4752L0.443946 9.92711C0.147981 9.60641 0 9.19825 0 8.70262C0 8.207 0.147981 7.79883 0.443946 7.47813C0.73991 7.15743 1.11659 6.99708 1.57399 6.99708C2.03139 6.99708 2.40807 7.15743 2.70404 7.47813L5.7713 10.8018Z" fill="black" />
+                                            </svg>
+                                        </span>
+                                    </label>
+                                    <label>Optics
+                                        <input type="checkbox" />
+                                        <span className="checkmark">
+                                            <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.7713 10.8018L15.296 0.481049C15.5919 0.160349 15.9686 0 16.426 0C16.8834 0 17.2601 0.160349 17.5561 0.481049C17.852 0.801749 18 1.20991 18 1.70554C18 2.20117 17.852 2.60933 17.5561 2.93003L6.90134 14.4752C6.57847 14.8251 6.20179 15 5.7713 15C5.34081 15 4.96413 14.8251 4.64126 14.4752L0.443946 9.92711C0.147981 9.60641 0 9.19825 0 8.70262C0 8.207 0.147981 7.79883 0.443946 7.47813C0.73991 7.15743 1.11659 6.99708 1.57399 6.99708C2.03139 6.99708 2.40807 7.15743 2.70404 7.47813L5.7713 10.8018Z" fill="black" />
+                                            </svg>
+                                        </span>
+                                    </label>
+                                    <label>Art & Museum
+                                        <input type="checkbox" />
+                                        <span className="checkmark">
+                                            <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.7713 10.8018L15.296 0.481049C15.5919 0.160349 15.9686 0 16.426 0C16.8834 0 17.2601 0.160349 17.5561 0.481049C17.852 0.801749 18 1.20991 18 1.70554C18 2.20117 17.852 2.60933 17.5561 2.93003L6.90134 14.4752C6.57847 14.8251 6.20179 15 5.7713 15C5.34081 15 4.96413 14.8251 4.64126 14.4752L0.443946 9.92711C0.147981 9.60641 0 9.19825 0 8.70262C0 8.207 0.147981 7.79883 0.443946 7.47813C0.73991 7.15743 1.11659 6.99708 1.57399 6.99708C2.03139 6.99708 2.40807 7.15743 2.70404 7.47813L5.7713 10.8018Z" fill="black" />
+                                            </svg>
+                                        </span>
+                                    </label>
+                                    <label>Nature
+                                        <input type="checkbox" />
+                                        <span className="checkmark">
+                                            <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.7713 10.8018L15.296 0.481049C15.5919 0.160349 15.9686 0 16.426 0C16.8834 0 17.2601 0.160349 17.5561 0.481049C17.852 0.801749 18 1.20991 18 1.70554C18 2.20117 17.852 2.60933 17.5561 2.93003L6.90134 14.4752C6.57847 14.8251 6.20179 15 5.7713 15C5.34081 15 4.96413 14.8251 4.64126 14.4752L0.443946 9.92711C0.147981 9.60641 0 9.19825 0 8.70262C0 8.207 0.147981 7.79883 0.443946 7.47813C0.73991 7.15743 1.11659 6.99708 1.57399 6.99708C2.03139 6.99708 2.40807 7.15743 2.70404 7.47813L5.7713 10.8018Z" fill="black" />
+                                            </svg>
+                                        </span>
+                                    </label>
+                                </motion.div>}
                         </div>
                         <div className="price">
                             <div className="heading">
-                                <button>
+                                <button onClick={() => setPriceState(!priceState)}>
                                     By price
-                                    <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg className={priceState ? "" : "reverse"} width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M10.3522 18.6558C10.5778 18.8762 10.8837 19 11.2026 19C11.5216 19 11.8275 18.8762 12.053 18.6558L18.0073 12.8373L23.9615 18.6558C24.1883 18.87 24.4922 18.9884 24.8076 18.9858C25.123 18.9831 25.4247 18.8595 25.6477 18.6415C25.8707 18.4236 25.9972 18.1288 26 17.8206C26.0027 17.5124 25.8815 17.2154 25.6623 16.9937L18.8577 10.3442C18.6321 10.1238 18.3262 10 18.0073 10C17.6883 10 17.3824 10.1238 17.1568 10.3442L10.3522 16.9937C10.1267 17.2142 10 17.5131 10 17.8248C10 18.1365 10.1267 18.4354 10.3522 18.6558Z" fill="#2F2F2F" />
                                     </svg>
                                 </button>
                             </div>
-                            <div className="range-wrapper">
-                                <div className="value">
-                                    <p>${range1}.00 - ${range2}.00</p>
-                                </div>
-                                <div className="range-container">
-                                    <div className="slider-track"
-                                        style={{ background: `linear-gradient(to right, #B8BCB5 ${percent1}%, #333333 ${percent1}%, #333333 ${percent2}%, #B8BCB5 ${percent2}%)` }}
-                                    ></div>
-                                    <input type="range" min="0" defaultValue='5' max="100" id="slider1"
-                                        ref={slider1}
-                                        onInput={handleSlide1}
-                                    />
-                                    <input type="range" min="0" defaultValue='45' max="100" id="slider2"
-                                        ref={slider2}
-                                        onInput={handleSlide2}
-                                    />
-                                </div>
-                            </div>
+                            {priceState &&
+                                <motion.div className="range-wrapper"
+                                    initial={{ y: 0, opacity: 0 }}
+                                    animate={{ y: 10, opacity: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    <div className="value">
+                                        <p>${range1}.00 - ${range2}.00</p>
+                                    </div>
+                                    <div className="range-container">
+                                        <div className="slider-track"
+                                            style={{ background: `linear-gradient(to right, #B8BCB5 ${percent1}%, #333333 ${percent1}%, #333333 ${percent2}%, #B8BCB5 ${percent2}%)` }}
+                                        ></div>
+                                        <input type="range" min="0" defaultValue='5' max="100" id="slider1"
+                                            ref={slider1}
+                                            onInput={handleSlide1}
+                                        />
+                                        <input type="range" min="0" defaultValue='45' max="100" id="slider2"
+                                            ref={slider2}
+                                            onInput={handleSlide2}
+                                        />
+                                    </div>
+                                </motion.div>}
                         </div>
                         <div className="artist">
                             <div className="heading">
-                                <button>
+                                <button onClick={() => setArtistState(!artistState)}>
                                     By artist
-                                    <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg className={artistState ? "" : "reverse"} width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M10.3522 18.6558C10.5778 18.8762 10.8837 19 11.2026 19C11.5216 19 11.8275 18.8762 12.053 18.6558L18.0073 12.8373L23.9615 18.6558C24.1883 18.87 24.4922 18.9884 24.8076 18.9858C25.123 18.9831 25.4247 18.8595 25.6477 18.6415C25.8707 18.4236 25.9972 18.1288 26 17.8206C26.0027 17.5124 25.8815 17.2154 25.6623 16.9937L18.8577 10.3442C18.6321 10.1238 18.3262 10 18.0073 10C17.6883 10 17.3824 10.1238 17.1568 10.3442L10.3522 16.9937C10.1267 17.2142 10 17.5131 10 17.8248C10 18.1365 10.1267 18.4354 10.3522 18.6558Z" fill="#2F2F2F" />
                                     </svg>
                                 </button>
                             </div>
-                            <div>
-                                <p>All</p>
-                                <p>Below $100.00</p>
-                                <p>$100.00 - $150.00</p>
-                                <p>$150.00 - $200.00</p>
-                                <p>Above $200.00</p>
-                            </div>
+                            {artistState &&
+                                <motion.div
+                                    initial={{ y: -10, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    <p>All</p>
+                                    <p>Below $100.00</p>
+                                    <p>$100.00 - $150.00</p>
+                                    <p>$150.00 - $200.00</p>
+                                    <p>Above $200.00</p>
+                                </motion.div>}
                         </div>
                         <div className="year">
                             <div className="heading">
-                                <button>
+                                <button onClick={() => setCollectionState(!collectionState)}>
                                     Collection year
-                                    <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg className={collectionState ? "" : "reverse"} width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M10.3522 18.6558C10.5778 18.8762 10.8837 19 11.2026 19C11.5216 19 11.8275 18.8762 12.053 18.6558L18.0073 12.8373L23.9615 18.6558C24.1883 18.87 24.4922 18.9884 24.8076 18.9858C25.123 18.9831 25.4247 18.8595 25.6477 18.6415C25.8707 18.4236 25.9972 18.1288 26 17.8206C26.0027 17.5124 25.8815 17.2154 25.6623 16.9937L18.8577 10.3442C18.6321 10.1238 18.3262 10 18.0073 10C17.6883 10 17.3824 10.1238 17.1568 10.3442L10.3522 16.9937C10.1267 17.2142 10 17.5131 10 17.8248C10 18.1365 10.1267 18.4354 10.3522 18.6558Z" fill="#2F2F2F" />
                                     </svg>
                                 </button>
@@ -175,23 +197,50 @@ const Marketplace = () => {
                 <main>
                     <div className="topbar">
                         <p>See 1-6 of 15 results</p>
-                        <button>Sort by
-                            <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <button className="filter" onClick={() => setFilterState(!filterState)}>
+                            Filters
+                            <svg className={filterState ? "" : "reverse"} width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10.3522 10.3442C10.5778 10.1238 10.8837 10 11.2026 10C11.5216 10 11.8275 10.1238 12.053 10.3442L18.0073 16.1627L23.9615 10.3442C24.1883 10.13 24.4922 10.0116 24.8076 10.0142C25.123 10.0169 25.4247 10.1405 25.6477 10.3585C25.8707 10.5764 25.9972 10.8712 26 11.1794C26.0027 11.4876 25.8815 11.7846 25.6623 12.0063L18.8577 18.6558C18.6321 18.8762 18.3262 19 18.0073 19C17.6883 19 17.3824 18.8762 17.1568 18.6558L10.3522 12.0063C10.1267 11.7858 10 11.4869 10 11.1752C10 10.8635 10.1267 10.5646 10.3522 10.3442Z" fill="#2F2F2F" />
                             </svg>
                         </button>
+                        <button onClick={() => setSortState(!sortState)}>
+                            Sort by
+                            <svg className={sortState ? "" : "reverse"} width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.3522 10.3442C10.5778 10.1238 10.8837 10 11.2026 10C11.5216 10 11.8275 10.1238 12.053 10.3442L18.0073 16.1627L23.9615 10.3442C24.1883 10.13 24.4922 10.0116 24.8076 10.0142C25.123 10.0169 25.4247 10.1405 25.6477 10.3585C25.8707 10.5764 25.9972 10.8712 26 11.1794C26.0027 11.4876 25.8815 11.7846 25.6623 12.0063L18.8577 18.6558C18.6321 18.8762 18.3262 19 18.0073 19C17.6883 19 17.3824 18.8762 17.1568 18.6558L10.3522 12.0063C10.1267 11.7858 10 11.4869 10 11.1752C10 10.8635 10.1267 10.5646 10.3522 10.3442Z" fill="#2F2F2F" />
+                            </svg>
+                        </button>
+                        {sortState &&
+                            <motion.div
+                                initial={{ y: -10, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <button onClick={() => setSortState(false)}>Category</button>
+                                <button onClick={() => setSortState(false)}>Price</button>
+                                <button onClick={() => setSortState(false)}>Artist</button>
+                                <button onClick={() => setSortState(false)}>Year</button>
+                            </motion.div>}
                     </div>
                     <div className="items">
                         {marketItems.map((item, index) => (
                             <Link to='/marketplace' key={index}>
                                 <img src={item.image} alt="" />
-                                <p className="title">{item.title}</p>
-                                <p className="price">{item.dollar_price}</p>
+                                <div>
+                                    <p className="title">{item.title}</p>
+                                    <p className="price">{item.dollar_price}</p>
+                                </div>
                             </Link>
                         ))}
                     </div>
                     <div className="see-more">
                         <button>See more</button>
+                        <button>Load more
+                            <span>
+                                <svg width="54" height="42" viewBox="0 0 54 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M10 21C10 20.6759 10.1279 20.3651 10.3556 20.1359C10.5833 19.9067 10.8922 19.7779 11.2142 19.7779H39.8525L32.2103 12.0888C31.9823 11.8593 31.8542 11.5481 31.8542 11.2236C31.8542 10.8991 31.9823 10.5879 32.2103 10.3584C32.4383 10.1289 32.7475 10 33.07 10C33.3924 10 33.7016 10.1289 33.9296 10.3584L43.6433 20.1348C43.7564 20.2483 43.8461 20.3832 43.9073 20.5316C43.9685 20.6801 44 20.8393 44 21C44 21.1607 43.9685 21.3199 43.9073 21.4684C43.8461 21.6168 43.7564 21.7517 43.6433 21.8652L33.9296 31.6416C33.7016 31.8711 33.3924 32 33.07 32C32.7475 32 32.4383 31.8711 32.2103 31.6416C31.9823 31.4122 31.8542 31.1009 31.8542 30.7764C31.8542 30.4519 31.9823 30.1407 32.2103 29.9112L39.8525 22.2221H11.2142C10.8922 22.2221 10.5833 22.0933 10.3556 21.8641C10.1279 21.6349 10 21.3241 10 21V21Z" fill="#616161" />
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </main>
             </div>

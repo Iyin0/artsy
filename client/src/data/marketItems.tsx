@@ -7,6 +7,7 @@ import veil from '../images/Rectangle 50.png'
 import alternating from '../images/Rectangle 48.png'
 import rosemary from '../images/Rectangle 52.png'
 import beverly from '../images/Rectangle 55.png'
+import egypt from '../images/Rectangle 62.png'
 
 const marketItems = [
     {
@@ -52,6 +53,11 @@ const marketItems = [
     {
         image: beverly,
         title: "BEVERLY",
+        dollar_price: '$3.90',
+    },
+    {
+        image: egypt,
+        title: "ROAD TO EGYPT",
         dollar_price: '$3.90',
     },
 ]
