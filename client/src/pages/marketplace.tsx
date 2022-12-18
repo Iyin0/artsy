@@ -81,8 +81,8 @@ const Marketplace = () => {
                             </div>
                             {categoriesState &&
                                 <motion.div className="categories"
-                                    initial={{ y: 0, opacity: 0 }}
-                                    animate={{ y: 10, opacity: 1 }}
+                                    initial={{ y: -10, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
                                     transition={{ duration: 0.5 }}
                                 >
                                     <label>Editorials
@@ -138,8 +138,8 @@ const Marketplace = () => {
                             </div>
                             {priceState &&
                                 <motion.div className="range-wrapper"
-                                    initial={{ y: 0, opacity: 0 }}
-                                    animate={{ y: 10, opacity: 1 }}
+                                    initial={{ y: -10, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
                                     transition={{ duration: 0.5 }}
                                 >
                                     <div className="value">
@@ -223,7 +223,7 @@ const Marketplace = () => {
                     </div>
                     <div className="items">
                         {marketItems.map((item, index) => (
-                            <Link to='/marketplace' key={index}>
+                            <Link to={`/marketplace/${item.id}`} key={index}>
                                 <img src={item.image} alt="" />
                                 <div>
                                     <p className="title">{item.title}</p>

@@ -5,6 +5,7 @@ import Navbar from "./components/navbar"
 import Auctions from './pages/auctions'
 import Drop from './pages/drop'
 import Home from './pages/home'
+import MarketItem from './pages/marketItem'
 import Marketplace from './pages/marketplace'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/marketplace' element={<Marketplace />} />
+            <Route path='/marketplace/:id' element={<MarketItem />} />
             <Route path='/auctions' element={<Auctions />} />
             <Route path='/drop' element={<Drop />} />
           </Routes>
