@@ -151,6 +151,14 @@
                             font-size: 26px;
                             line-height: 31px;
                             color: #FFFFFF;
+
+                            &:hover {
+                                background-color: #051076;
+                            }
+
+                            &:active {
+                                background-color: #000000;
+                            }
                         }
 
                         .fav {
