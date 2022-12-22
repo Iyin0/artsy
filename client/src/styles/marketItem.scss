@@ -1,7 +1,6 @@
 .marketItem {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
 
     main {
         width: 100%;
@@ -64,6 +63,7 @@
 
                     p {
                         display: flex;
+                        align-items: center;
 
                         span {
                             font-family: 'STIX Two Text';
@@ -121,7 +121,6 @@
                         display: flex;
                         align-items: center;
                         font-family: 'Satoshi';
-                        font-style: normal;
                         font-weight: 500;
                         font-size: 36px;
                         line-height: 97.6%;
@@ -246,6 +245,10 @@
                 }
             }
 
+            .more {
+                display: none;
+            }
+
             .explore-container {
                 display: flex;
                 overflow-x: scroll;
@@ -258,7 +261,7 @@
                     background-color: #FFFFFF;
                     border: 1px solid #333333;
                     margin-right: 40px;
-                    padding: 79px 42px;
+                    padding: 26px 42px 22px;
 
                     .like {
                         width: 100%;
@@ -315,6 +318,218 @@
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .marketItem {
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .navigate {
+                display: flex;
+                margin: 26px 0px 7px;
+                width: 100%;
+                padding-left: 8px;
+
+                a,
+                p,
+                span {
+                    font-size: 18px;
+                }
+
+            }
+
+            .item {
+                flex-direction: column;
+                border: none;
+                border-top: 1px solid #333333;
+                padding: 0px;
+
+                .img-container {
+                    padding: 30px 8px 0px;
+                    border-right: none;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+
+                    img {
+                        width: 357px;
+                        height: 384px;
+                    }
+                }
+
+                .detail {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+
+                    .title {
+                        padding: 0px 8px;
+
+                        h1 {
+                            font-weight: 500;
+                            font-size: 16px;
+                            line-height: 157.6%;
+                        }
+
+                        p {
+
+                            svg {
+                                transform: scale(0.4);
+                            }
+
+                            span {
+                                font-size: 16px;
+                                margin-left: -15px;
+                                margin-top: 4px;
+                            }
+                        }
+                    }
+
+                    .info {
+                        border: none;
+                        padding: 0px 8px;
+
+                        .creator {
+                            font-weight: 500;
+                            font-size: 16px;
+                            line-height: 157.6%;
+                            color: #000000;
+                        }
+
+                        .location {
+                            font-size: 16px;
+                            line-height: 157.6%;
+                            color: #616161;
+                            margin: 20px 0px;
+                        }
+
+                        .views {
+                            font-size: 16px;
+                            line-height: 157.6%;
+                            color: #616161;
+                        }
+
+                        .counter {
+                            font-size: 30px;
+                        }
+
+                        .cart {
+
+                            margin-bottom: 56px;
+
+                            .add-cart {
+                                width: 214px;
+                                height: 57px;
+                                border-radius: 4px;
+                                font-family: 'Satoshi';
+                                font-size: 17px;
+                                line-height: 23px;
+                            }
+
+                            .fav {
+                                margin-left: 19px;
+                                border: 1px solid #161616;
+                                width: 66px;
+                                height: 57px;
+                                border-radius: 4px;
+
+                                svg {
+                                    transform: scale(0.7);
+                                }
+                            }
+                        }
+                    }
+
+                    .description,
+                    .listings,
+                    .status {
+                        width: 100%;
+                        padding: 20px 28px;
+
+                        button {
+                            font-size: 18px;
+                            line-height: 157.6%;
+                        }
+
+                        p {
+                            font-size: 14px;
+                            line-height: 25px;
+                            margin-top: 20px;
+                        }
+
+                    }
+
+                    .listings {
+                        border-top: 1px solid #333333;
+                        border-bottom: 1px solid #333333;
+                    }
+
+                    .description {
+                        border-top: 1px solid #333333;
+                    }
+
+                    .status {
+                        border-bottom: 1px solid #333333;
+                    }
+                }
+            }
+
+            .explore-more {
+                width: 100%;
+                margin: 100px 0px;
+                padding: 0px 8px;
+
+                .explore {
+                    display: none;
+                }
+
+                .more {
+                    width: 100%;
+                    display: block;
+                    font-family: 'Satoshi';
+                    font-weight: 500;
+                    font-size: 24px;
+                    line-height: 157.6%;
+                    color: #292929;
+                    margin-bottom: 30px;
+                }
+
+                .explore-container {
+
+                    .explore-item {
+                        padding: 11px 15px;
+
+                        img {
+                            width: 369px;
+                            min-width: 369px;
+                            height: 421px;
+                            margin: 10px 0px;
+                        }
+
+                        .details {
+                            display: flex;
+                            width: 100%;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            p {
+                                font-size: 24px;
+
+                            }
+                        }
+                    }
+                }
+
+                .btn-container {
+                    display: none;
                 }
             }
         }
