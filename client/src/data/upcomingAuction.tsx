@@ -12,6 +12,7 @@ import topBidsImg2 from '../images/Rectangle 58.png'
 
 export const activeAuctions = [
     {
+        id: '1',
         image: auction1,
         time: 24015000,
         bid: 0,
@@ -51,10 +52,11 @@ export const activeAuctions = [
         ]
     },
     {
+        id: '2',
         image: auction2,
         time: 14015000,
         bid: 0,
-        tag: 'Lost or Winter',
+        tag: 'Alternatives',
         creator: 'Stormi Rylie',
         bidders: [
             {
@@ -90,10 +92,11 @@ export const activeAuctions = [
         ]
     },
     {
+        id: '3',
         image: auction3,
         time: 34015000,
         bid: 0,
-        tag: 'Lost or Winter',
+        tag: 'Elderly',
         creator: 'Stormi Rylie',
         bidders: [
             {

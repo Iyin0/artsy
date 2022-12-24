@@ -5,6 +5,7 @@ import Navbar from "./components/navbar"
 import Auctions from './pages/auctions'
 import Drop from './pages/drop'
 import Home from './pages/home'
+import LiveBid from './pages/liveBid'
 import MarketItem from './pages/marketItem'
 import Marketplace from './pages/marketplace'
 
@@ -20,6 +21,7 @@ function App() {
             <Route path='/marketplace' element={<Marketplace />} />
             <Route path='/marketplace/:id' element={<MarketItem />} />
             <Route path='/auctions' element={<Auctions />} />
+            <Route path='/auctions/live-bid/:id' element={<LiveBid />} />
             <Route path='/drop' element={<Drop />} />
           </Routes>
         </AnimatePresence>

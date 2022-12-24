@@ -1,0 +1,438 @@
+.live-bid {
+    display: flex;
+    justify-content: center;
+    padding: 0px 120px;
+
+    main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .navigate {
+            display: flex;
+            margin: 40px 0px 27px;
+
+            a,
+            p,
+            span {
+                font-family: 'Satoshi';
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 52px;
+                color: #BCB7B7;
+            }
+
+            p {
+                &:last-child {
+                    color: #000000;
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        .bid-area {
+            display: flex;
+            height: 808px;
+            border: 1px solid #000000;
+
+            .item {
+                width: 50%;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .texts {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+
+                .live {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 40px 60px;
+
+                    button {
+                        width: 49px;
+                        height: 49px;
+                        border-radius: 50%;
+                        background-color: rgba(184, 180, 180, 0.49);
+                        transition: 0.5s;
+
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+                    }
+
+                    p {
+                        width: 104px;
+                        height: 39px;
+                        background-color: #4693ED;
+                        border-radius: 20px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-family: 'Inter';
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 24px;
+                        color: #FFFFFF;
+                    }
+                }
+
+                .current-bid {
+                    width: 100%;
+                    text-align: center;
+                    font-family: 'Inter';
+                    font-weight: 600;
+                    font-size: 48px;
+                    line-height: 157.6%;
+                    color: #FFFFFF;
+                    margin-top: -100px;
+                }
+
+                .tag {
+                    font-family: 'Inter';
+                    font-weight: 400;
+                    font-size: 24px;
+                    line-height: 157.6%;
+                    color: #FFFFFF;
+                    margin: 0px 0px 60px 60px;
+                }
+            }
+
+            .interactions {
+                display: flex;
+                flex-direction: column;
+                padding-left: 43px;
+                width: 50%;
+
+                .comments {
+                    height: 78%;
+                    overflow-y: scroll;
+
+                    &::-webkit-scrollbar {
+                        width: 0px;
+                    }
+
+                    .comment {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 30px;
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+
+                        &:first-child {
+                            margin-top: 30px;
+                        }
+
+                        img {
+                            width: 70px;
+                            height: 70px;
+                            border-radius: 50%;
+                            margin-right: 26px;
+                        }
+
+                        .name {
+                            font-family: 'Satoshi';
+                            font-weight: 400;
+                            font-size: 22px;
+                            line-height: 157.6%;
+                            color: #333333;
+                            margin-bottom: 17px;
+                        }
+
+                        .bid {
+                            font-family: 'Satoshi';
+                            font-weight: 500;
+                            font-size: 22px;
+                            line-height: 157.6%;
+                            color: #333333;
+                        }
+                    }
+                }
+
+                .creator {
+                    font-family: 'Inter';
+                    font-style: italic;
+                    font-weight: 500;
+                    font-size: 20px;
+                    line-height: 157.6%;
+                    color: #BAB9B9;
+                    margin: 32px 0px 11px;
+                }
+
+                .input-area {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    div {
+                        display: flex;
+                        align-items: center;
+                        width: 70%;
+                        height: 65px;
+                        border-radius: 25px;
+                        border: 1px solid #000000;
+                        padding: 0px 24px 0px 32px;
+
+                        input {
+                            height: 100%;
+                            flex-grow: 1;
+                            font-family: 'Satoshi';
+                            font-weight: 500;
+                            font-size: 22px;
+                            line-height: 157.6%;
+                            color: #616161;
+
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+
+                        button {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+
+                    .like {
+                        width: 59px;
+                        height: 59px;
+                        border-radius: 50%;
+                        border: 1px solid #000000;
+                        margin-right: 60px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+
+        .drops {
+            display: flex;
+            align-items: center;
+            padding: 38px 0px 106px 20px;
+
+            p {
+                font-family: 'Satoshi';
+                font-weight: 500;
+                font-size: 36px;
+                line-height: 64px;
+                color: #000000;
+            }
+
+            button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 78px;
+                height: 78px;
+                border-radius: 50%;
+                border: 0.5px solid #000000;
+                margin-left: 28px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .live-bid {
+        padding: 0;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        background-color: #ffffff;
+
+        main {
+            height: 100vh;
+            overflow: hidden;
+
+            .navigate {
+                display: none;
+            }
+
+            .bid-area {
+                flex-direction: column;
+                border: none;
+                position: relative;
+                height: 100%;
+
+                .item {
+                    width: 100%;
+                    height: 100%;
+
+                    .texts {
+                        flex-direction: row;
+                        height: auto;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        height: 100%;
+                    }
+
+                    .live {
+                        order: 1;
+                        padding: 0;
+                        margin: 10px 23px 0px 0px;
+
+                        button {
+                            order: 1;
+                            background: transparent;
+
+                            svg {
+                                transform: scale(0.6);
+                            }
+                        }
+
+                        p {
+                            width: 49px;
+                            height: 27px;
+                            background-color: #006CA2;
+                            border-radius: 5px;
+                            font-family: 'Satoshi';
+                            font-size: 13px;
+                            line-height: 157%;
+                        }
+                    }
+
+                    .current-bid {
+                        position: absolute;
+                        top: 50%;
+                        font-family: 'Satoshi';
+                        font-weight: 700;
+                        font-size: 30px;
+                        line-height: 157%;
+                        color: #FFFFFF;
+                        margin: 0;
+                    }
+
+                    .tag {
+                        font-family: 'Satoshi';
+                        font-weight: 500;
+                        font-size: 16px;
+                        line-height: 157%;
+                        color: #FFFFFF;
+                        margin: 23px 0px 0px 28px;
+                    }
+                }
+
+                .interactions {
+                    width: auto;
+                    position: absolute;
+                    bottom: 20px;
+                    width: 100%;
+                    // background-color: aqua;
+                    // height: 50%;
+                    padding-left: 28px;
+
+                    .comments {
+                        // height: 50%;
+
+                        .comment {
+                            margin-bottom: 14px;
+
+                            &:first-child {
+                                margin-top: 14px;
+                            }
+
+                            &:nth-child(-n +2) {
+                                opacity: 0.6;
+                            }
+
+                            img {
+                                width: 32px;
+                                height: 32px;
+                                margin-right: 6px;
+                            }
+
+                            .name {
+                                font-family: 'Satoshi';
+                                font-weight: 500;
+                                font-size: 13px;
+                                line-height: 157.6%;
+                                color: #FFFFFF;
+                                margin-bottom: 2px;
+                            }
+
+                            .bid {
+                                font-family: 'Satoshi';
+                                font-weight: 400;
+                                font-size: 13px;
+                                line-height: 157.6%;
+                                color: #FFFFFF
+                            }
+                        }
+                    }
+
+                    .creator {
+                        display: none;
+                    }
+
+                    .input-area {
+                        margin-top: 12px;
+
+                        div {
+                            height: 35px;
+                            width: 302px;
+                            padding: 0px 24px 0px 20px;
+                            border: 1px solid #FFFFFF;
+                            border-radius: 15px;
+                            padding: 0px 0px 0px 20px;
+
+                            input {
+                                font-weight: 400;
+                                font-size: 11px;
+                                line-height: 157.6%;
+                                color: #FFFFFF;
+                                background-color: transparent;
+
+                                &::placeholder {
+                                    color: #FFFFFF;
+                                }
+                            }
+
+                            button {
+                                svg {
+                                    transform: scale(0.6);
+
+                                    path {
+                                        fill: #ffffff;
+                                    }
+                                }
+                            }
+                        }
+
+                        .like {
+                            width: 29px;
+                            height: 29px;
+                            background: rgba(255, 255, 255, 0.35);
+                            margin-right: 28px;
+                            margin-left: 10px;
+
+                            svg {
+                                transform: scale(0.8);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .drops {
+                display: none;
+            }
+        }
+    }
+}
