@@ -8,6 +8,7 @@ import creators from '../data/creators';
 import mobileHero from '../data/mobile-hero';
 import upcoming from '../data/upcoming';
 import { motion } from 'framer-motion';
+import Newsletter from '../components/newsletter';
 
 
 const Home = () => {
@@ -15,7 +16,6 @@ const Home = () => {
     const [currentCreatorIndex, setCurrentCreatorIndex] = useState(0)
     const [currentCreator, setCurrentCreator] = useState(creators[currentCreatorIndex])
     const creatorRef = useRef<number | null>(null)
-    const [email, setEmail] = useState('')
 
     const resetCretorTimer = () => {
         if (creatorRef.current) window.clearInterval(creatorRef.current)
@@ -211,19 +211,7 @@ const Home = () => {
                         </motion.div>
                     </div>
                 </div>
-                <div className="home-newsletter">
-                    <div className="newsletter">
-                        <h2>NEWSLETTER</h2>
-                        <p>Subscribe to get daily updates on new drops & exciting deals</p>
-                        <form>
-                            <input type="email" placeholder='ENTER YOUR EMAIL'
-                                onChange={(e) => setEmail(e.target.value)}
-                                value={email}
-                            />
-                            <button>SUSCRIBE</button>
-                        </form>
-                    </div>
-                </div>
+                <Newsletter />
             </div>
         </PageTransition>
     );

@@ -1,0 +1,248 @@
+.drops {
+    display: flex;
+    padding: 0px 120px;
+
+    main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .top {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 61px 0px 87px;
+
+            h1 {
+                font-family: 'Satoshi';
+                font-weight: 500;
+                font-size: 48px;
+                line-height: 175.5%;
+                color: #000000;
+            }
+
+            p {
+                font-family: 'Satoshi';
+                font-weight: 400;
+                font-size: 32px;
+                line-height: 64px;
+                color: #616161;
+                margin: 30px 0px;
+            }
+
+            button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 84px;
+                width: 100%;
+                max-width: 420px;
+                border: 1px solid #000000;
+                border-radius: 10px;
+                font-family: 'Satoshi';
+                font-weight: 500;
+                font-size: 36px;
+                line-height: 64px;
+                color: #000000;
+            }
+        }
+
+        .bottom {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .drop {
+                display: flex;
+                margin-bottom: 138px;
+
+                .image {
+                    position: relative;
+                    width: 60%;
+                    max-width: 683px;
+                    height: 441px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    .time {
+                        position: absolute;
+                        bottom: 14px;
+                        right: 54px;
+                        width: 90%;
+                        max-width: 578px;
+                        height: 131px;
+                        background-color: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(245, 244, 244, 0.24);
+                        border: 0.5px solid #FFFFFF;
+                        backdrop-filter: blur(1.5px);
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: flex-end;
+                        justify-content: space-between;
+                        padding: 0px 11px 0px 30px;
+
+                        div {
+                            p {
+                                &:first-child {
+                                    font-family: 'Satoshi';
+                                    font-weight: 400;
+                                    font-size: 28px;
+                                    line-height: 175.5%;
+                                    color: #FFFFFF
+                                }
+
+                                &:last-child {
+                                    font-family: 'STIX Two Math';
+                                    font-weight: 400;
+                                    font-size: 40px;
+                                    line-height: 136%;
+                                    color: #FFFFFF;
+                                }
+                            }
+
+                            button {
+                                width: 107px;
+                                height: 35px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                font-family: 'Satoshi';
+                                font-weight: 500;
+                                font-size: 24px;
+                                line-height: 95.5%;
+                                color: #FFFFFF;
+                                margin-bottom: 15px;
+                                border-radius: 15px;
+                            }
+
+                            .view {
+                                background-color: #B8BABC;
+                            }
+
+                            .join {
+                                background-color: #4693ED;
+
+                            }
+                        }
+                    }
+                }
+
+                .info {
+                    width: 40%;
+                    max-width: 433px;
+                    margin-left: 40px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    .status {
+                        button {
+                            width: 189px;
+                            height: 43px;
+                            border-radius: 10px;
+                            font-family: 'Inter';
+                            font-weight: 500;
+                            font-size: 18px;
+                            line-height: 22px;
+                            color: #FFFFFF;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+                        .upcoming {
+                            background-color: #4693ED;
+                        }
+
+                        .live {
+                            background-color: #3EA03B;
+                        }
+
+                        .ended {
+                            background-color: #999EA5;
+                        }
+                    }
+
+                    .day {
+                        font-family: 'Satoshi';
+                        font-weight: 400;
+                        font-size: 20px;
+                        line-height: 27px;
+                        color: #000000;
+                    }
+
+                    .title {
+                        font-family: 'Satoshi';
+                        font-weight: 500;
+                        font-size: 36px;
+                        line-height: 49px;
+                        color: #000000;
+                    }
+
+                    .description {
+                        width: 100%;
+                        font-family: 'Satoshi';
+                        font-weight: 400;
+                        font-size: 20px;
+                        line-height: 157%;
+                        color: #616161;
+
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 3;
+                        overflow: hidden;
+                    }
+
+                    .creator {
+                        font-family: 'Satoshi';
+                        font-weight: 500;
+                        font-size: 24px;
+                        line-height: 157%;
+                        color: #000000;
+
+                        span {
+                            color: #006CA2;
+                        }
+                    }
+
+                    .link {
+                        button {
+                            font-family: 'Satoshi';
+                            font-weight: 400;
+                            font-size: 20px;
+                            line-height: 157%;
+                            text-decoration-line: underline;
+                            color: #006CA2;
+                        }
+                    }
+                }
+            }
+        }
+
+        .see {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+
+            button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #333333;
+                border-radius: 10px;
+                width: 249px;
+                height: 73px;
+                font-family: 'Satoshi';
+                font-weight: 500;
+                font-size: 30px;
+                line-height: 41px;
+                color: #333333;
+            }
+        }
+    }
+}

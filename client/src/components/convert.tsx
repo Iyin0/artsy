@@ -10,7 +10,11 @@ const convert = (value: number) => {
         str_hour = "";
     }
 
-    else if (hours > 0) {
+    else if (hours > 0 && hours < 10) {
+        str_hour = "0" + hours
+    }
+
+    else if (hours >= 10) {
         str_hour = hours + ""
     }
 
@@ -33,7 +37,7 @@ const convert = (value: number) => {
     else if (seconds > 10) {
         str_sec = "" + seconds
     }
-    return (`${str_hour}hrs:${str_minute}mins:${str_sec}s`)
+    return (`${str_hour} hrs : ${str_minute} mins : ${str_sec} s`)
 }
 
 export default convert

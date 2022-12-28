@@ -544,74 +544,6 @@
 
 }
 
-.home-newsletter {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-
-    .newsletter {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid #333333;
-        width: 90%;
-        height: 320px;
-        margin: 147px 0px 50px;
-
-        h2 {
-            font-family: 'Baskervville';
-            font-weight: 400;
-            font-size: 30.2105px;
-            line-height: 39px;
-            color: #333333;
-        }
-
-        p {
-            font-family: 'Satoshi';
-            font-weight: 400;
-            font-size: 32px;
-            line-height: 43px;
-            color: #333333;
-            margin: 20px 0px 34px;
-        }
-
-        form {
-            display: flex;
-            align-items: center;
-
-            input {
-                width: 446px;
-                height: 60px;
-                padding-left: 58px;
-                margin-right: 23px;
-                border: 1px solid #333333;
-                font-family: 'Baskervville';
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 21px;
-                color: #333333;
-            }
-
-            button {
-                width: 181px;
-                height: 60px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-family: 'Baskervville';
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 21px;
-                color: #FFFFFF;
-                background-color: #272727;
-                border: 1px solid #333333;
-                border-radius: 0px;
-            }
-        }
-    }
-}
-
 @media screen and (max-width: 576px) {
 
     .home-intro {
@@ -948,54 +880,6 @@
             top: 48px;
             max-width: 237px;
             max-height: 240px;
-        }
-    }
-
-    .home-newsletter {
-
-        .newsletter {
-            justify-content: center;
-            align-items: flex-start;
-            border: none;
-            width: 90%;
-            height: auto;
-            margin: 0px 0px 50px;
-
-            h2 {
-                font-size: 24px;
-                line-height: 31px;
-            }
-
-            p {
-                font-size: 12px;
-                line-height: 16px;
-                margin: 13px 0px 25px;
-            }
-
-            form {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-
-                input {
-                    width: 100%;
-                    height: 46px;
-                    padding-left: 15px;
-                    margin-right: 0;
-                    font-family: 'Satoshi';
-                    font-size: 10px;
-                    line-height: 14px;
-                }
-
-                button {
-                    height: 53px;
-                    font-family: 'Satoshi';
-                    font-size: 12px;
-                    line-height: 16px;
-                    margin-top: 26px;
-                }
-            }
         }
     }
 }
