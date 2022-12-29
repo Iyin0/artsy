@@ -31,9 +31,9 @@ const Drop = () => {
                                 </div>
                                 <div className="info">
                                     <div className="status">
-                                        {drop.status === "UPCOMING" && <button className="upcoming">{drop.status}</button>}
-                                        {drop.status === "LIVE NOW" && <button className="live">{drop.status}</button>}
-                                        {drop.status === "ENDED" && <button className="ended">{drop.status}</button>}
+                                        {drop.status === "UPCOMING" && <div className="upcoming">{drop.status}</div>}
+                                        {drop.status === "LIVE NOW" && <div className="live">{drop.status}</div>}
+                                        {drop.status === "ENDED" && <div className="ended">{drop.status}</div>}
                                     </div>
                                     <p className="day">{drop.day} at {drop.time} WAT</p>
                                     <p className="title">{drop.title}</p>
