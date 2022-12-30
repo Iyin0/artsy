@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import convert from "../components/convert";
 import Newsletter from "../components/newsletter";
 import PageTransition from "../components/pageTransition";
@@ -5,6 +6,12 @@ import { drops } from "../data/upcomingDrops";
 import '../styles/drop.scss'
 
 const Drop = () => {
+
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, []);
+
     return (
         <PageTransition>
             <div className="drops">
