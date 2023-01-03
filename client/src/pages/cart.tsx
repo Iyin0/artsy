@@ -136,7 +136,10 @@ const Cart = () => {
                                 <label>Wallet type</label><br />
                                 <input type="text" /><br />
                                 <label>Key</label><br />
-                                <input type="text" placeholder="Please enter your key" /><br />
+                                <div className="key">
+                                    <input type="text" placeholder="Please enter your key" /><br />
+                                    <img src={metamask} alt="" />
+                                </div>
                                 <div className="date">
                                     <div>
                                         <label>Expiry date</label><br />
