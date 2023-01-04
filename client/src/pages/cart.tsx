@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PageTransition from "../components/pageTransition";
 import cart from "../data/cart";
 import '../styles/cart.scss'
@@ -14,6 +14,7 @@ const Cart = () => {
     const [cartState, setCartState] = useState(true)
     const [shippingState, setShippingState] = useState(false)
     const [paymentState, setPaymentState] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         // 👇️ scroll to top on page load
@@ -97,7 +98,7 @@ const Cart = () => {
                             <input type="tel" placeholder="0812 3456 785" />
                             <div className="ship">
                                 <button
-                                    onClick={(e) => { e.preventDefault(); setCartState(false); setShippingState(false); setPaymentState(true) }}>Proceed to payment
+                                    onClick={(e) => { e.preventDefault(); setCartState(true); setShippingState(false); setPaymentState(true) }}>Proceed to payment
                                 </button>
                                 <button
                                     onClick={(e) => { e.preventDefault(); setCartState(true); setShippingState(false); setPaymentState(false) }}>
@@ -161,7 +162,7 @@ const Cart = () => {
                                 </label>
                             </form>
                             <div className="pay">
-                                <button>Confirm</button>
+                                <button onClick={() => navigate('/marketplace/confirm')}>Confirm</button>
                             </div>
                         </div>
                     }

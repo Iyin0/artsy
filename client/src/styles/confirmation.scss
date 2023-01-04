@@ -1,0 +1,89 @@
+.confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 102px 0px 284px;
+
+    .circle1,
+    .circle2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .congrats {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .thanks {
+            font-family: 'Satoshi';
+            font-weight: 500;
+            font-size: 40.552px;
+            line-height: 156.7%;
+            color: #000000;
+            margin: 45px 0px 30px;
+            text-align: center;
+        }
+
+        .amazing {
+            font-family: 'Satoshi';
+            font-weight: 400;
+            font-size: 30.414px;
+            line-height: 156.7%;
+            color: #000000;
+            position: relative;
+            text-align: center;
+
+            span {
+                background: -webkit-linear-gradient(#4693ED 100%, #79C2D2 100%, #C05609 49%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            img {
+                position: absolute;
+                top: -180px;
+                left: 380px;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width:576px) {
+    .confirm {
+        padding: 58px 8px 208px;
+        overflow-x: hidden;
+
+        .circle1,
+        .circle2 {
+            display: none;
+        }
+
+        .congrats {
+
+            .woman {
+                width: 275px;
+                height: 246px;
+            }
+
+            .thanks {
+                font-size: 18px;
+                color: #333333;
+                margin: 75px 0px 20px;
+            }
+
+            .amazing {
+                font-size: 16px;
+                color: #616161;
+                margin-left: -40px;
+
+                img {
+                    top: -120px;
+                    left: 180px;
+                }
+            }
+        }
+    }
+}
