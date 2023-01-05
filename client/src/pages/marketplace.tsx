@@ -232,7 +232,7 @@ const Marketplace = () => {
                                 <img src={item.image} alt="" />
                                 <div>
                                     <p className="title">{item.title}</p>
-                                    <p className="price">{item.dollar_price}</p>
+                                    <p className="price">${item.dollar_price.toFixed(2)}</p>
                                 </div>
                             </Link>
                         ))}

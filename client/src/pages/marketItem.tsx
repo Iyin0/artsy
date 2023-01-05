@@ -1,50 +1,100 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import marketItems from "../data/marketItems";
 import '../styles/marketItem.scss'
 import explore from "../data/explore";
+import { useAppDispatch, useAppSelector } from "../reducers/hooks";
+import { addItem } from "../reducers/cartSlice";
+import Popup from "../components/popup";
+
 
 const MarketItem = () => {
     const param = useParams()
-    const item = marketItems.find(item => item.id === param.id)
+    const item = marketItems.find(item => item.id === param.id)!
     const [descState, setDescState] = useState(false)
     const [listState, setListState] = useState(false)
     const [statusState, setStatusState] = useState(false)
     const [count, setCount] = useState(0)
+    const dispatch = useAppDispatch()
+    const cartItems = useAppSelector((state) => state.cart.items)
+    const [popup, setPopup] = useState(false)
+    const popupRef = useRef<number>(null!)
+    const [popupMessage, setPopupMessage] = useState('')
+
+    const resetPopupTimer = () => {
+        if (popupRef.current) window.clearInterval(popupRef.current)
+    }
+
+    const displayPopup = (message: string) => {
+        setPopupMessage(message)
+        setPopup(true)
+        resetPopupTimer()
+        popupRef.current = window.setTimeout(() => {
+            setPopup(false)
+        }, 3000)
+    }
+
+    const addToCart = () => {
+        if (count === 0) {
+            displayPopup('No quantity selected')
+        }
+        else if (cartItems.find(cartitem => item.id === cartitem.id)) {
+            displayPopup('Item already in cart')
+        }
+        else {
+            dispatch(addItem({
+                id: item.id,
+                image: item.image,
+                title: item.title,
+                dollar_price: item.dollar_price,
+                eth_price: item.eth_price,
+                creator: item.creator,
+                location: item.location,
+                views: item.views,
+                description: item.description,
+                listings: item.listings,
+                status: item.status,
+                quantity: count,
+                size: '200ft'
+            }))
+            displayPopup('Item added to cart')
+        }
+    }
 
     return (
         <div className="marketItem">
             <main>
+                {popup && <Popup message={popupMessage} />}
                 <div className="navigate">
                     <Link to='/marketplace'>Marketplace</Link>
                     <span>/</span>
-                    <p>{item?.title}</p>
+                    <p>{item.title}</p>
                 </div>
                 <div className="item">
                     <div className="img-container">
-                        <img src={item?.image} alt="" />
+                        <img src={item.image} alt="" />
                     </div>
                     <div className="detail">
                         <div className="title">
-                            <h1>{item?.title}</h1>
+                            <h1>{item.title}</h1>
                             <p>
                                 <svg width="53" height="62" viewBox="0 0 53 62" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M42.7025 29.9475L27.5825 10.8396C27.4539 10.6765 27.2896 10.5445 27.102 10.4538C26.9145 10.3631 26.7086 10.3159 26.5 10.3159C26.2914 10.3159 26.0855 10.3631 25.8979 10.4538C25.7104 10.5445 25.5461 10.6765 25.4175 10.8396L10.2975 29.9475C10.105 30.1842 10 30.4792 10 30.7835C10 31.0877 10.105 31.3827 10.2975 31.6194L25.4175 50.7273C25.5461 50.8904 25.7104 51.0224 25.8979 51.1131C26.0855 51.2038 26.2914 51.251 26.5 51.251C26.7086 51.251 26.9145 51.2038 27.102 51.1131C27.2896 51.0224 27.4539 50.8904 27.5825 50.7273L42.7025 31.6194C42.895 31.3827 43 31.0877 43 30.7835C43 30.4792 42.895 30.1842 42.7025 29.9475ZM27.8746 35.4922V15.6166L39.4552 30.2546L27.8746 35.4922ZM25.1254 35.4922L13.5448 30.2546L25.1254 15.6166V35.4922ZM25.1254 38.4949V45.9503L15.9503 34.3491L25.1254 38.4949Z" fill="#333333" />
                                 </svg>
-                                <span>{item?.eth_price}</span>
+                                <span>{item.eth_price}</span>
                             </p>
                         </div>
                         <div className="info">
-                            <p className="creator">Creator : <span>{item?.creator}</span></p>
-                            <p className="location">Made in {item?.location}</p>
-                            <p className="views">Total views: <span>{item?.views} views</span></p>
+                            <p className="creator">Creator : <span>{item.creator}</span></p>
+                            <p className="location">Made in {item.location}</p>
+                            <p className="views">Total views: <span>{item.views} views</span></p>
                             <div className="counter">
                                 <button onClick={() => setCount(count === 0 ? 0 : count - 1)}>-</button>
                                 <p>{count}</p>
                                 <button onClick={() => setCount(count === 10 ? 10 : count + 1)}>+</button>
                             </div>
                             <div className="cart-addition">
-                                <button className="add-cart">Add to cart
+                                <button className="add-cart" onClick={addToCart}>Add to cart
                                     <svg width="42" height="34" viewBox="0 0 42 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path fillRule="evenodd" clipRule="evenodd" d="M10 16.7403C10 16.5417 10.079 16.3512 10.2197 16.2108C10.3603 16.0703 10.5511 15.9914 10.75 15.9914H28.4395L23.719 11.2799C23.5782 11.1393 23.4991 10.9486 23.4991 10.7498C23.4991 10.5509 23.5782 10.3602 23.719 10.2196C23.8598 10.079 24.0508 10 24.25 10C24.4492 10 24.6402 10.079 24.781 10.2196L30.781 16.2101C30.8508 16.2797 30.9063 16.3623 30.9441 16.4533C30.9819 16.5442 31.0013 16.6418 31.0013 16.7403C31.0013 16.8388 30.9819 16.9363 30.9441 17.0273C30.9063 17.1182 30.8508 17.2009 30.781 17.2704L24.781 23.2609C24.6402 23.4015 24.4492 23.4805 24.25 23.4805C24.0508 23.4805 23.8598 23.4015 23.719 23.2609C23.5782 23.1203 23.4991 22.9296 23.4991 22.7308C23.4991 22.5319 23.5782 22.3412 23.719 22.2006L28.4395 17.4891H10.75C10.5511 17.4891 10.3603 17.4102 10.2197 17.2697C10.079 17.1293 10 16.9389 10 16.7403Z" fill="#F5F4F4" />
                                     </svg>
@@ -63,7 +113,7 @@ const MarketItem = () => {
                                 </svg>
                             </button>
                             {descState &&
-                                <p>{item?.description}</p>
+                                <p>{item.description}</p>
                             }
                         </div>
                         <div className="listings">
@@ -73,7 +123,7 @@ const MarketItem = () => {
                                 </svg>
                             </button>
                             {listState &&
-                                <p>{item?.listings}</p>
+                                <p>{item.listings}</p>
                             }
                         </div>
                         <div className="status">
@@ -83,7 +133,7 @@ const MarketItem = () => {
                                 </svg>
                             </button>
                             {statusState &&
-                                <p>{item?.status}</p>
+                                <p>{item.status}</p>
                             }
                         </div>
                     </div>

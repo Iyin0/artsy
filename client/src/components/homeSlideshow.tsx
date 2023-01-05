@@ -9,11 +9,11 @@ const HomeSlideshow = () => {
     const [fourthSlide, setFourthSlide] = useState(3)
     const [fifthSlide, setFifthSlide] = useState(4)
 
-    const firstTimeoutRef = useRef<number | null>(null)
-    const secondTimeoutRef = useRef<number | null>(null)
-    const thirdTimeoutRef = useRef<number | null>(null)
-    const fourthTimeoutRef = useRef<number | null>(null)
-    const fifthTimeoutRef = useRef<number | null>(null)
+    const firstTimeoutRef = useRef<number>(null!)
+    const secondTimeoutRef = useRef<number>(null!)
+    const thirdTimeoutRef = useRef<number>(null!)
+    const fourthTimeoutRef = useRef<number>(null!)
+    const fifthTimeoutRef = useRef<number>(null!)
 
     const [firstDelay, setFirstDelay] = useState(2000)
     const [secondDelay, setSecondDelay] = useState(2200)
